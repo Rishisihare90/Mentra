@@ -16,8 +16,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int userId;
-
-    @Not
     private String firstName;
     private String lastName;
     private String email;
