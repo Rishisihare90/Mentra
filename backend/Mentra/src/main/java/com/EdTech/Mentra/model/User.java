@@ -7,12 +7,16 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.print.attribute.standard.DateTimeAtCompleted;
+import javax.print.attribute.standard.DateTimeAtCreation;
+import java.util.Date;
+
 @Entity
 @Data
 @NoArgsConstructor
 @Table(name = "users",
         uniqueConstraints = {
-        @UniqueConstraint(columnNames = "email")
+        @UniqueConstraint(columnNames = {"email","username"})
         })
 public class User {
     @Id
@@ -21,41 +25,69 @@ public class User {
     private int userId;
 
     @NotBlank
-    @Size(max = 20)
-    @Column(name = "firstname")
-    private String firstName;
+    @Size(max = 50)
+    @Column(name = "username")
+    private String username;
 
-    @NotBlank
-    @Size(max = 20)
-    @Column(name = "lastname")
-    private String lastName;
 
     @Email
-    @Size(max = 50)
+    @Size(max = 100)
     @NotBlank
     @Column(name = "email")
     private String email;
 
+
+
     @NotBlank
-    @Size(max = 120)
+    @Size(max = 255)
     @Column(name = "password")
     private String password;
 
-    private String profilePicUrl;
-    private String bio;
-    @NotBlank
-    private String location;
 
-    public User(String firstName, String lastName, String email, String password, String location) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    @NotBlank
+    @Size(max = 50)
+    @Column(name = "firstname")
+    private String firstName;
+
+    @NotBlank
+    @Size(max = 50)
+    @Column(name = "lastname")
+    private String lastName;
+
+    private String bio;
+
+    private String profilePic;
+    @Size(max = 100)
+    private String location;
+    @Size(max = 100)
+    private String job_title;
+    @Size(max = 100)
+    private String company;
+
+    private DateTimeAtCreation createdAt;
+    private DateTimeAtCompleted updatedAt;
+
+    private DateTimeAtCompleted lastActive;
+
+    public User(String location, String username, String email, String password, String firstName, String lastName) {
+        this.location = location;
+        this.username = username;
         this.email = email;
         this.password = password;
-        this.location = location;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    private boolean isVerified;
-
-
-
+    public User(String username, String email, String password, String firstName, String lastName, String bio, String profilePic, String location, String job_title, String company) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bio = bio;
+        this.profilePic = profilePic;
+        this.location = location;
+        this.job_title = job_title;
+        this.company = company;
+    }
 }
