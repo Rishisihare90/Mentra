@@ -51,4 +51,16 @@ public class UserProfile {
     @Enumerated(EnumType.STRING)
     private MenteeStatus menteeStatus;
 
+    public UserProfile(User user, MentorStatus mentor_status, MenteeStatus menteeStatus, String headline, String experience, String about, String education, String achievements, String availability, DecimalFormat rating) {
+        this.user = user;
+        this.mentor_status = mentor_status;
+        this.menteeStatus = menteeStatus;
+        this.headline = headline;
+        this.experience = experience;
+        this.about = about;
+        this.education = education;
+        this.achievements = achievements;
+        this.availability = availability;
+        this.rating = rating;
+    }
 }
