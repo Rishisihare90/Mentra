@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "users",
         uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"email","username"})
+                @UniqueConstraint(columnNames = {"email", "username"})
         })
 public class User {
     @Id
@@ -37,7 +37,6 @@ public class User {
     @NotBlank
     @Column(name = "email")
     private String email;
-
 
 
     @NotBlank
@@ -73,6 +72,12 @@ public class User {
 
     @ToString.Exclude
     @OneToMany(mappedBy = "user",
-                cascade = {CascadeType.ALL},orphanRemoval = true)
+            cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<UserSkills> userSkills;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Connections> connections;
+
 }
