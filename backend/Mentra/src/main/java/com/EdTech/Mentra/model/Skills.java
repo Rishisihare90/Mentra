@@ -6,6 +6,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -17,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Skills {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Skills_id")
+    @Column(name = "skills_id")
     private Long skillsId;
 
     @NotNull
@@ -31,9 +34,8 @@ public class Skills {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    public Skills(String name, String category, String description) {
-        this.name = name;
-        this.category = category;
-        this.description = description;
-    }
+    @ToString.Exclude
+    @OneToMany(mappedBy = "skills",
+            cascade = {CascadeType.ALL},orphanRemoval = true)
+    private List<UserSkills> userSkills;
 }

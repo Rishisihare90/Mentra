@@ -6,10 +6,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.print.attribute.standard.DateTimeAtCompleted;
 import javax.print.attribute.standard.DateTimeAtCreation;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -69,25 +71,8 @@ public class User {
 
     private DateTimeAtCompleted lastActive;
 
-    public User(String location, String username, String email, String password, String firstName, String lastName) {
-        this.location = location;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public User(String username, String email, String password, String firstName, String lastName, String bio, String profilePic, String location, String job_title, String company) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.bio = bio;
-        this.profilePic = profilePic;
-        this.location = location;
-        this.job_title = job_title;
-        this.company = company;
-    }
+    @ToString.Exclude
+    @OneToMany(mappedBy = "user",
+                cascade = {CascadeType.ALL},orphanRemoval = true)
+    private List<UserSkills> userSkills;
 }
