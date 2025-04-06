@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.util.List;
 
 
 @Entity
@@ -22,4 +25,9 @@ public class Categories {
 
     @Column(columnDefinition = "TEXT")
     private String description;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "categories",
+                cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<CategorySkills> categorySkills;
 }

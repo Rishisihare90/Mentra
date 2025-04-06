@@ -38,4 +38,9 @@ public class Skills {
     @OneToMany(mappedBy = "skills",
             cascade = {CascadeType.ALL},orphanRemoval = true)
     private List<UserSkills> userSkills;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "skills",
+            cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<CategorySkills> categorySkills;
 }

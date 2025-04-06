@@ -30,5 +30,4 @@ public class UserSkills {
 
     private Boolean isMentor;
     private Boolean isMentee;
-
 }
