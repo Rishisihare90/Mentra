@@ -41,10 +41,22 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    public User(String firstName, String lastName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    private String profilePicUrl;
+    private String bio;
+
+    @NotBlank
+    private String location;
+
+    private boolean isVerified;
+
+    public User(String bio, String email, String firstName, boolean isVerified, String lastName, String location, String password, String profilePicUrl) {
+        this.bio = bio;
         this.email = email;
+        this.firstName = firstName;
+        this.isVerified = isVerified;
+        this.lastName = lastName;
+        this.location = location;
         this.password = password;
+        this.profilePicUrl = profilePicUrl;
     }
 }
