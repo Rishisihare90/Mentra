@@ -78,6 +78,21 @@ public class User {
     @ToString.Exclude
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Connections> connections;
+    private List<Connections> userConnections;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "peer",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Connections> peerConnections;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "sender",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Messages> sendMessages;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "receiver",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Messages> receivedMessages;
 
 }

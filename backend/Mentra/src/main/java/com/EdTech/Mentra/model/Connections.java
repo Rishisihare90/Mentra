@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.print.attribute.standard.DateTimeAtCompleted;
 import javax.print.attribute.standard.DateTimeAtCreation;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -34,4 +35,11 @@ public class Connections {
     private DateTimeAtCreation createdAt;
 
     private DateTimeAtCompleted updatedAt;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "connections",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Messages> messages;
+
+
 }
