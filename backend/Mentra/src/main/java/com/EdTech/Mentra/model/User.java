@@ -43,20 +43,19 @@ public class User {
 
     private String profilePicUrl;
     private String bio;
-
     @NotBlank
     private String location;
 
+    public User(String firstName, String lastName, String email, String password, String location) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.location = location;
+    }
+
     private boolean isVerified;
 
-    public User(String bio, String email, String firstName, boolean isVerified, String lastName, String location, String password, String profilePicUrl) {
-        this.bio = bio;
-        this.email = email;
-        this.firstName = firstName;
-        this.isVerified = isVerified;
-        this.lastName = lastName;
-        this.location = location;
-        this.password = password;
-        this.profilePicUrl = profilePicUrl;
-    }
+
+
 }
