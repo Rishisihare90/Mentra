@@ -3,6 +3,9 @@ package com.EdTech.Mentra.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.text.DecimalFormat;
 
 @Entity
 @Data
@@ -38,6 +41,14 @@ public class UserProfile {
     private String availability;
 
     @Column(precision = 3, scale = 2)
-    private Double rating;
+    private DecimalFormat rating;
+
+    @ToString.Exclude
+    @Enumerated(EnumType.STRING)
+    private MentorStatus mentor_status;
+
+    @ToString.Exclude
+    @Enumerated(EnumType.STRING)
+    private MenteeStatus menteeStatus;
 
 }
