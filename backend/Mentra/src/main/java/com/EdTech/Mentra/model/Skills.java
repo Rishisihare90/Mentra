@@ -49,6 +49,11 @@ public class Skills {
             cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MentorRequests> mentorRequests;
 
+    @ToString.Exclude
+    @OneToMany(mappedBy = "skills",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Sessions> skillSession;
+
 
 
 }
