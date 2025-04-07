@@ -115,4 +115,18 @@ public class User {
     @OneToMany(mappedBy = "mentor",
             cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Sessions> mentorSessions;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "reviewer",
+            cascade = CascadeType.ALL)
+    private List<Reviews> reviews;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "reviewee",
+            cascade = CascadeType.ALL)
+    private List<Reviews> reviewee;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Notifications> notifications;
 }
