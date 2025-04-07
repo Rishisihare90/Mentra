@@ -39,4 +39,5 @@ public class Messages {
     @ManyToOne
     @JoinColumn(name = "connection_id", referencedColumnName = "connection_id")
     private Connections connections;
+
 }

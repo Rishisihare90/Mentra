@@ -95,4 +95,13 @@ public class User {
             cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Messages> receivedMessages;
 
+    @ToString.Exclude
+    @OneToMany(mappedBy = "mentee",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MentorRequests> menteeRequests;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "mentor",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MentorRequests> mentorRequests;
 }
