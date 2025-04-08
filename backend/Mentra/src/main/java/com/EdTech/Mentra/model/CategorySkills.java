@@ -23,6 +23,4 @@ public class CategorySkills {
     @ManyToOne
     @JoinColumn(name = "skills_id", referencedColumnName = "skills_id")
     private Skills skills;
-
-
 }
