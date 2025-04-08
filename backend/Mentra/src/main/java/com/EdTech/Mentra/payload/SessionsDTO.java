@@ -1,0 +1,23 @@
+package com.EdTech.Mentra.payload;
+
+import com.EdTech.Mentra.model.SessionStatus;
+import com.EdTech.Mentra.model.Skills;
+import com.EdTech.Mentra.model.User;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.print.attribute.standard.DateTimeAtCreation;
+
+@Data
+@NoArgsConstructor
+public class SessionsDTO {
+    private Long sessionId;
+    private User mentee;
+    private User mentor;
+    private Skills skills;
+    private DateTimeAtCreation scheduledAt;
+    private Integer duration;
+    private SessionStatus status;
+    private String notes;
+    private String feedback;
+}
