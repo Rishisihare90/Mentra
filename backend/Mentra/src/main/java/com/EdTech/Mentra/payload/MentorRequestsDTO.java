@@ -6,8 +6,8 @@ import com.EdTech.Mentra.model.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-import javax.print.attribute.standard.DateTimeAtCreation;
+import java.time.LocalDateTime;
+
 
 @Data
 @NoArgsConstructor
@@ -18,6 +18,6 @@ public class MentorRequestsDTO {
     private Skills skills;
     private MentorStatus mentorStatus;
     private String message;
-    private DateTimeAtCreation createdAt;
-    private DateTimeAtCompleted updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

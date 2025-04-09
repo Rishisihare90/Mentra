@@ -6,7 +6,8 @@ import com.EdTech.Mentra.model.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.print.attribute.standard.DateTimeAtCreation;
+import java.time.LocalDateTime;
+
 
 @Data
 @NoArgsConstructor
@@ -15,7 +16,7 @@ public class SessionsDTO {
     private User mentee;
     private User mentor;
     private Skills skills;
-    private DateTimeAtCreation scheduledAt;
+    private LocalDateTime scheduledAt;
     private Integer duration;
     private SessionStatus status;
     private String notes;

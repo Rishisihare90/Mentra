@@ -4,13 +4,12 @@ import com.EdTech.Mentra.model.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-import javax.print.attribute.standard.DateTimeAtCreation;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class UserCreateDTO {
+public class UserDTO {
     private Long user_id;
     private String username;
     private String email;
@@ -22,9 +21,9 @@ public class UserCreateDTO {
     private String location;
     private String job_title;
     private String company;
-    private DateTimeAtCreation createdAt;
-    private DateTimeAtCompleted updatedAt;
-    private DateTimeAtCompleted lastActive;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private LocalDateTime lastActive;
     private List<UserSkills> userSkills;
     private List<Connections> userConnections;
     private List<Connections> peerConnections;

@@ -4,8 +4,8 @@ import com.EdTech.Mentra.model.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-import javax.print.attribute.standard.DateTimeAtCreation;
+import java.time.LocalDateTime;
+
 
 @Data
 @NoArgsConstructor
@@ -14,7 +14,7 @@ public class NotificationsDTO {
     private User user;
     private String type;
     private String content;
-    private DateTimeAtCreation createdAt;
-    private DateTimeAtCompleted readAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime readAt;
     private String link;
 }
