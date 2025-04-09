@@ -6,7 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
+import java.time.LocalDateTime;
+
 
 @Entity
 @Data
@@ -32,8 +33,19 @@ public class Messages {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    private DateTimeAtCompleted sendAt;
-    private DateTimeAtCompleted readAt;
+    private LocalDateTime sendAt;
+    private LocalDateTime readAt;
+
+    @PrePersist
+    public void onCreate(){
+        this.sendAt = LocalDateTime.now();
+        this.readAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void onRead(){
+        this.readAt = LocalDateTime.now();
+    }
 
     @ToString.Exclude
     @ManyToOne

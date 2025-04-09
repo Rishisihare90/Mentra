@@ -6,7 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.print.attribute.standard.DateTimeAtCreation;
+import java.time.LocalDateTime;
+
 
 @Entity
 @NoArgsConstructor
@@ -32,7 +33,7 @@ public class Sessions {
     @JoinColumn(name = "skills_id", referencedColumnName = "skills_id")
     private Skills skills;
 
-    private DateTimeAtCreation scheduledAt;
+    private LocalDateTime scheduledAt;
     private Integer duration;
 
     @Enumerated(EnumType.STRING)
@@ -43,4 +44,10 @@ public class Sessions {
 
     @Column(columnDefinition = "TEXT")
     private String feedback;
+
+    @PrePersist
+    public void onCreate(){
+        this.scheduledAt = LocalDateTime.now();
+    }
+
 }

@@ -8,8 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-import javax.print.attribute.standard.DateTimeAtCreation;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -65,10 +64,23 @@ public class User {
     @Size(max = 100)
     private String company;
 
-    private DateTimeAtCreation createdAt;
-    private DateTimeAtCompleted updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-    private DateTimeAtCompleted lastActive;
+    private LocalDateTime lastActive;
+
+    @PrePersist
+    public void onCreate(){
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+        this.lastActive = LocalDateTime.now();
+    }
+
+    @PreUpdate()
+    public void onUpdate(){
+        this.updatedAt = LocalDateTime.now();
+    }
+
 
     @ToString.Exclude
     @OneToMany(mappedBy = "user",

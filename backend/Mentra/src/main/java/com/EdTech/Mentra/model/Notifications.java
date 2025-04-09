@@ -7,8 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-import javax.print.attribute.standard.DateTimeAtCreation;
+import java.time.LocalDateTime;
+
 
 @Entity
 @Data
@@ -31,9 +31,20 @@ public class Notifications {
     @NotNull
     private String content;
 
-    private DateTimeAtCreation createdAt;
+    private LocalDateTime createdAt;
 
-    private DateTimeAtCompleted readAt;
+    private LocalDateTime readAt;
+
+    @PrePersist
+    public void onCreate(){
+        this.createdAt = LocalDateTime.now();
+        this.readAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void onUpdate(){
+        this.readAt = LocalDateTime.now();
+    }
 
     @Size(max = 255)
     private String link;

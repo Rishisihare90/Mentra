@@ -6,7 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.print.attribute.standard.DateTimeAtCreation;
+import java.time.LocalDateTime;
+
 
 @Entity
 @Data
@@ -32,5 +33,10 @@ public class Reviews {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    private DateTimeAtCreation createdAt;
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    public void onCreate(){
+        this.createdAt = LocalDateTime.now();
+    }
 }

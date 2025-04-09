@@ -5,8 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-import javax.print.attribute.standard.DateTimeAtCreation;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -32,9 +31,20 @@ public class Connections {
     @Enumerated(EnumType.STRING)
     private ConnectionStatus status;
 
-    private DateTimeAtCreation createdAt;
+    private LocalDateTime createdAt;
 
-    private DateTimeAtCompleted updatedAt;
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    public void onCreate(){
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void onUpdate(){
+        this.updatedAt = LocalDateTime.now();
+    }
 
     @ToString.Exclude
     @OneToMany(mappedBy = "connections",
